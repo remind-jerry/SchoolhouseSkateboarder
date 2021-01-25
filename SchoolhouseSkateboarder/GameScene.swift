@@ -232,6 +232,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let scrollAdjustment = CGFloat(elapsedTime / expectedElapsedTime)
         let currentScrollAmount = scrollSpeed * scrollAdjustment
         updateBricks(withScrollAmount: currentScrollAmount)
+        updateGems(withScrollAmount: currentScrollAmount) // проверить
+        updateScore(withCurrentTime: currentTime) // проверить
+    }
         
     func updateSkater() {
         if let velocityY = skater.physicsBody?.velocity.dy {
@@ -239,35 +242,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 skater.isOnGround = false
             }
         }
-            // Проверяем, должна ли игра закончиться
+        // Проверяем, должна ли игра закончиться
         let isOffScreen = skater.position.y < 0.0 ||  skater.position.x < 0.0
         let maxRotation = CGFloat(GLKMathDegreesToRadians(85.0))
         let isTippedOver = skater.zRotation > maxRotation || skater.zRotation < -maxRotation
-        if isOffScreen || isTippedOver {
-        gameOver()
-        }
+        if isOffScreen || isTippedOver { gameOver() }
     }
-        func updateScore(withCurrentTime currentTime: TimeInterval) {
-            // Количество очков игрока увеличивается по мере игры
-            // Счет обновляется каждую секунду
-            let elapsedTime = currentTime - lastScoreUpdateTime
-            if elapsedTime > 1.0 {
-               // Увеличиваем количество очков
+    
+    func updateScore(withCurrentTime currentTime: TimeInterval) {
+        // Количество очков игрока увеличивается по мере игры
+        // Счет обновляется каждую секунду
+        let elapsedTime = currentTime - lastScoreUpdateTime
+        if elapsedTime > 1.0 {
+            // Увеличиваем количество очков
             score += Int(scrollSpeed)
-        // Присваиваем свойству lastScoreUpdateTime значение 8 текущего времени
+            // Присваиваем свойству lastScoreUpdateTime значение 8 текущего времени
             lastScoreUpdateTime = currentTime
             updateScoreLabelText()
-            }
         }
-        updateSkater()
-        updateGems(withScrollAmount: currentScrollAmount)
-        updateScore(withCurrentTime: currentTime)
+        updateSkater() // проверить
     }
     
     @objc func handleTap(tapGesture: UITapGestureRecognizer) {
-        if skater.isOnGround {
-            skater.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 260.0))
-        }
+        if skater.isOnGround { skater.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 260.0)) }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
