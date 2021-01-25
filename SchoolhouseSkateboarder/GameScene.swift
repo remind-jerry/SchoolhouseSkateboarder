@@ -93,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         // Надпись с максимумом набранных игроком очков
         let highScoreLabel: SKLabelNode = SKLabelNode(text: "0")
-        highScoreLabel.position = CGPoint(x: frame.size.width - 14.0,y: frame.size.height - 40.0)
+        highScoreLabel.position = CGPoint(x: frame.size.width - 14.0, y: frame.size.height - 40.0)
         highScoreLabel.horizontalAlignmentMode = .right
         highScoreLabel.fontName = "Courier-Bold"
         highScoreLabel.fontSize = 18.0
@@ -225,9 +225,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let expectedElapsedTime: TimeInterval = 1.0 / 60.0
         let scrollAdjustment = CGFloat(elapsedTime / expectedElapsedTime)
         let currentScrollAmount = scrollSpeed * scrollAdjustment
+        
         updateBricks(withScrollAmount: currentScrollAmount)
-        updateGems(withScrollAmount: currentScrollAmount) // проверить
-        updateScore(withCurrentTime: currentTime) // проверить
+        updateGems(withScrollAmount: currentScrollAmount)
+        updateScore(withCurrentTime: currentTime)
     }
         
     func updateSkater() {
@@ -254,7 +255,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             lastScoreUpdateTime = currentTime
             updateScoreLabelText()
         }
-        updateSkater() // проверить
+        updateSkater()
     }
     
     @objc func handleTap(tapGesture: UITapGestureRecognizer) {
