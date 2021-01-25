@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+
 struct PhysicsCategory {
     static let skater: UInt32 = 0x1 << 0
     static let brick: UInt32 = 0x1 << 1
@@ -82,7 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         addChild(scoreLabel)
         
         // Надпись "лучший результат" в правом верхнем углу
-        let highScoreTextLabel: SKLabelNode = SKLabelNode(text:  "лучший результат")
+        let highScoreTextLabel: SKLabelNode = SKLabelNode(text:  "Лучший результат")
         highScoreTextLabel.position = CGPoint(x: frame.size.width - 14.0,  y: frame.size.height - 20.0)
         highScoreTextLabel.horizontalAlignmentMode = .right
         highScoreTextLabel.fontName = "Courier-Bold"
@@ -119,10 +120,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         scrollSpeed = startingScrollSpeed
         brickLevel = .low
         lastUpdateTime = nil
-//        for brick in bricks { brick.removeFromParent() }
         bricks.forEach { $0.removeFromParent() }
         bricks.removeAll(keepingCapacity: true)
-//        for gem in gems { removeGem(gem) }
         gems.forEach { removeGem($0) }
     }
     
@@ -154,18 +153,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func spawnGem(atPosition position: CGPoint) {
         let gem = SKSpriteNode(imageNamed: "gem")
-            gem.position = position
-            gem.zPosition = 9
-            addChild(gem)
-            gem.physicsBody = SKPhysicsBody(rectangleOf: gem.size, center: gem.centerRect.origin)
-            gem.physicsBody?.categoryBitMask = PhysicsCategory.gem
-            gem.physicsBody?.affectedByGravity = false
-            gems.append(gem)
+        gem.position = position
+        gem.zPosition = 9
+        addChild(gem)
+        gem.physicsBody = SKPhysicsBody(rectangleOf: gem.size, center: gem.centerRect.origin)
+        gem.physicsBody?.categoryBitMask = PhysicsCategory.gem
+        gem.physicsBody?.affectedByGravity = false
+        gems.append(gem)
     }
     
     func removeGem(_ gem: SKSpriteNode) {
         gem.removeFromParent()
-//        if let gemIndex = gems.index(of: gem) { gems.remove(at: gemIndex) }
         if let gemIndex = gems.firstIndex(of: gem) { gems.remove(at: gemIndex) }
     }
     
@@ -180,9 +178,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                     bricks.remove(at: brickIndex)
                 }
             } else {
-                  // Для секции, оставшейся на экране, обновляем положение
+                // Для секции, оставшейся на экране, обновляем положение
                 brick.position = CGPoint(x: newX, y: brick.position.y)
-                  //Обновляем значение для крайней правой секции
+                //Обновляем значение для крайней правой секции
                 if brick.position.x > farthestRightBrickX {
                     farthestRightBrickX = brick.position.x
                 }
@@ -202,11 +200,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 spawnGem(atPosition: CGPoint(x: newGemX, y: newGemY))
             } else if randomNumber < 4 && score > 20 {
                 brickLevel = brickLevel == .high ? .low : .high
-//                if brickLevel == .high {
-//                    brickLevel = .low
-//                } else if brickLevel == .low {
-//                    brickLevel = .high
-//                }
             }
             let newBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY))
             farthestRightBrickX = newBrick.position.x
@@ -224,6 +217,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     override func update(_ currentTime: TimeInterval) {
         scrollSpeed += 0.001
+        
         // Called before each frame is rendered
         var elapsedTime: TimeInterval = 0.0
         if let lastTimeStamp = lastUpdateTime { elapsedTime = currentTime - lastTimeStamp }
