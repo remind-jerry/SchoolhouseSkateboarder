@@ -7,14 +7,17 @@
 
 import SpriteKit
 
-class MenuLayer: SKSpriteNode {
+final class MenuLayer: SKSpriteNode {
+
     func display(message: String, score: Int?) {
         // Создаем надпись сообщения, используя передаваемое сообщение
-        let messageLabel: SKLabelNode = SKLabelNode(text: message)
+        let messageLabel = SKLabelNode(text: message)
       
         // Устанавливаем начальное положение надписи в левой стороне 8 слоя меню
-        let messageX = -frame.width
+        let messageX = frame.width / 2.0
+        print(messageX)
         let messageY = frame.height / 2.0
+        print(messageY)
         messageLabel.position = CGPoint(x: messageX, y: messageY)
        
         messageLabel.horizontalAlignmentMode = .center
@@ -32,7 +35,7 @@ class MenuLayer: SKSpriteNode {
             
             // Создаем текст с количеством очков из числа score
             let scoreString = String(format: "Score:%04d", scoreToDisplay)
-            let scoreLabel: SKLabelNode = SKLabelNode(text: scoreString)
+            let scoreLabel = SKLabelNode(text: scoreString)
            
             // Задаем начальное положение надписи справа от слоя меню
             let scoreLabelX = frame.width
