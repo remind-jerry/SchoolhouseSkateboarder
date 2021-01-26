@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E0A7333F25B7211B00171372 /* Skater.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A7333E25B7211B00171372 /* Skater.swift */; };
+		E0A8560425C04F1300E738BA /* MenuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8560325C04F1300E738BA /* MenuLayer.swift */; };
 		E0CD8EC025B5FE0A007E3414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD8EBF25B5FE0A007E3414 /* AppDelegate.swift */; };
 		E0CD8EC225B5FE0A007E3414 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E0CD8EC125B5FE0A007E3414 /* GameScene.sks */; };
 		E0CD8EC425B5FE0A007E3414 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = E0CD8EC325B5FE0A007E3414 /* Actions.sks */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		E0A7333E25B7211B00171372 /* Skater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skater.swift; sourceTree = "<group>"; };
+		E0A8560325C04F1300E738BA /* MenuLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLayer.swift; sourceTree = "<group>"; };
 		E0CD8EBC25B5FE0A007E3414 /* SchoolhouseSkateboarder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolhouseSkateboarder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0CD8EBF25B5FE0A007E3414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0CD8EC125B5FE0A007E3414 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				E0CD8ECC25B5FE0B007E3414 /* Assets.xcassets */,
 				E0CD8ECE25B5FE0B007E3414 /* Info.plist */,
 				E0A7333E25B7211B00171372 /* Skater.swift */,
+				E0A8560325C04F1300E738BA /* MenuLayer.swift */,
 			);
 			path = SchoolhouseSkateboarder;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			files = (
 				E0CD8EC625B5FE0A007E3414 /* GameScene.swift in Sources */,
 				E0A7333F25B7211B00171372 /* Skater.swift in Sources */,
+				E0A8560425C04F1300E738BA /* MenuLayer.swift in Sources */,
 				E0CD8EC825B5FE0A007E3414 /* GameViewController.swift in Sources */,
 				E0CD8EC025B5FE0A007E3414 /* AppDelegate.swift in Sources */,
 			);

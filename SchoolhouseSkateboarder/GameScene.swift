@@ -19,10 +19,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         case high = 100.0
     }
     
+    enum GameState {
+        case notRunning
+        case running
+    }
+    
     var bricks = [SKSpriteNode]()
     var gems = [SKSpriteNode]()
     var brickSize = CGSize.zero
     var brickLevel = BrickLevel.low
+    var gameState = GameState.notRunning
     var scrollSpeed: CGFloat = 5.0
     let startingScrollSpeed: CGFloat = 5.0
     let gravitySpeed: CGFloat = 1.5
@@ -35,7 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     override func didMove(to view: SKView) {
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -6.0)
         physicsWorld.contactDelegate = self
-        anchorPoint = CGPoint.zero
+        anchorPoint = .zero
         let background = SKSpriteNode(imageNamed: "background")
         let xMid = frame.midX
         let yMid = frame.midY
@@ -45,10 +51,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         setupLabels()
         addChild(skater)
         skater.setupPhysicsBody()
+        
         let tapMethod = #selector(GameScene.handleTap(tapGesture:))
-        let tapGesture = UITapGestureRecognizer(target: self,action: tapMethod)
+        let tapGesture = UITapGestureRecognizer(target: self, action: tapMethod)
         view.addGestureRecognizer(tapGesture)
-        startGame()
+        
+        // Добавляем слой меню с текстом "Нажмите, чтобы играть"
+        let menuBackgroundColor = UIColor.black.withAlphaComponent(0.4)
+        let menuLayer = MenuLayer(color: menuBackgroundColor, size: self.size)
+        menuLayer.anchorPoint = .zero
+        menuLayer.position = .zero
+        menuLayer.zPosition = 30
+        menuLayer.name = "menuLayer"
+        menuLayer.display(message: "Tap to play", score: nil)
+        
+        addChild(menuLayer)
     }
     
     func resetSkater() {
@@ -64,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func setupLabels() {
         // Надпись со словами "очки" в верхнем левом углу
-        let scoreTextLabel: SKLabelNode = SKLabelNode(text: "очки")
+        let scoreTextLabel: SKLabelNode = SKLabelNode(text: "Score")
         scoreTextLabel.position = CGPoint(x: 14.0, y: frame.size.height - 20.0)
         scoreTextLabel.horizontalAlignmentMode = .left
         scoreTextLabel.fontName = "Courier-Bold"
@@ -83,7 +100,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         addChild(scoreLabel)
         
         // Надпись "лучший результат" в правом верхнем углу
-        let highScoreTextLabel: SKLabelNode = SKLabelNode(text:  "Лучший результат")
+        let highScoreTextLabel: SKLabelNode = SKLabelNode(text:  "Best score")
         highScoreTextLabel.position = CGPoint(x: frame.size.width - 14.0,  y: frame.size.height - 20.0)
         highScoreTextLabel.horizontalAlignmentMode = .right
         highScoreTextLabel.fontName = "Courier-Bold"
@@ -115,6 +132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func startGame() {
+        gameState = .running
         resetSkater()
         score = 0
         scrollSpeed = startingScrollSpeed
@@ -126,11 +144,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func gameOver() {
+        gameState = .notRunning
         if score > highScore {
             highScore = score
             updateHighScoreLabelText()
         }
-        startGame()
+        
+        // Показываем надпись "Игра окончена!"
+        let menuBackgroundColor = UIColor.black.withAlphaComponent(0.4)
+        let menuLayer = MenuLayer(color: menuBackgroundColor, size: frame.size)
+        menuLayer.anchorPoint = .zero
+        menuLayer.position = .zero
+        menuLayer.zPosition = 30
+        menuLayer.name = "menuLayer"
+        menuLayer.display( message: "Game over", score: score)
+        addChild(menuLayer)
     }
     
     func spawnBrick (atPosition position: CGPoint) -> SKSpriteNode {
@@ -216,6 +244,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     override func update(_ currentTime: TimeInterval) {
+        if gameState != .running {
+               return
+        }
+        
         scrollSpeed += 0.001
         
         // Called before each frame is rendered
@@ -259,7 +291,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     @objc func handleTap(tapGesture: UITapGestureRecognizer) {
-        if skater.isOnGround { skater.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 260.0)) }
+        if gameState == .running {
+            if skater.isOnGround { skater.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 260.0)) }
+        } else {
+            // Если игра не запущена, нажатие на экран запускает новую игру
+            if let menuLayer: SKSpriteNode = childNode(withName: "menuLayer") as? SKSpriteNode {
+                menuLayer.removeFromParent()
+            }
+            startGame()
+        }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
