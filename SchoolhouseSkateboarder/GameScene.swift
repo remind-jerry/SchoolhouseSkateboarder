@@ -101,7 +101,7 @@ final class GameScene: SKScene {
     private func setupLabels() {
         // Надпись со словами "Score" в верхнем левом углу
         let scoreTextLabel: SKLabelNode = SKLabelNode(text: "Score")
-        scoreTextLabel.position = CGPoint(x: frame.minX + (frame.size.width / 10), y: frame.maxY - 50.0)
+        scoreTextLabel.position = CGPoint(x: frame.minX + 25, y: frame.maxY - 25)
         scoreTextLabel.horizontalAlignmentMode = .left
         scoreTextLabel.fontName = "Courier-Bold"
         scoreTextLabel.fontSize = 25.0
@@ -110,7 +110,7 @@ final class GameScene: SKScene {
         
         // Надпись с количеством очков игрока в текущей игре
         let scoreLabel: SKLabelNode = SKLabelNode(text: "0")
-        scoreLabel.position = CGPoint(x: frame.minX + 200, y: frame.maxY - 50.0)
+        scoreLabel.position = CGPoint(x: frame.minX + 125, y: frame.maxY - 25)
         scoreLabel.horizontalAlignmentMode = .left
         scoreLabel.fontName = "Courier-Bold"
         scoreLabel.fontSize = 25.0
@@ -120,7 +120,7 @@ final class GameScene: SKScene {
         
         // Надпись "Best score" в правом верхнем углу
         let highScoreTextLabel: SKLabelNode = SKLabelNode(text: "Best score")
-        highScoreTextLabel.position = CGPoint(x: frame.maxX - (frame.size.width / 6.5),  y: frame.maxY - 50)
+        highScoreTextLabel.position = CGPoint(x: frame.maxX - 100,  y: frame.maxY - 25)
         highScoreTextLabel.horizontalAlignmentMode = .right
         highScoreTextLabel.fontName = "Courier-Bold"
         highScoreTextLabel.fontSize = 25.0
@@ -129,7 +129,7 @@ final class GameScene: SKScene {
         
         // Надпись с максимумом набранных игроком очков
         let highScoreLabel: SKLabelNode = SKLabelNode(text: "0")
-        highScoreLabel.position = CGPoint(x: frame.maxX - 160, y: frame.maxY - 50.0)
+        highScoreLabel.position = CGPoint(x: frame.maxX - 80, y: frame.maxY - 25)
         highScoreLabel.horizontalAlignmentMode = .left
         highScoreLabel.fontName = "Courier-Bold"
         highScoreLabel.fontSize = 25.0

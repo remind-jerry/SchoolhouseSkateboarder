@@ -25,34 +25,16 @@ final class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let skScene = GameScene(fileNamed: "GameScene") {
-            let skView = view as! SKView
-            skView.ignoresSiblingOrder = true
-            skView.showsFPS = true
-            skView.showsNodeCount = true
+        if let view = view as? SKView {
+            let scene = GameScene()
+            scene.scaleMode = .resizeFill
 
-            // Set the scale mode to scale to fit the window
-            skScene.scaleMode = .aspectFill
+            view.showsFPS = true
+            view.showsNodeCount = true
+            view.ignoresSiblingOrder = true
 
-            // Present the scene
-            skView.presentScene(skScene)
+            view.presentScene(scene)
         }
     }
-//
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//
-//        let skView = self.view as! SKView
-//        if let scene = skView.scene {
-//            var size = scene.size
-//            let newHeight = skView.bounds.size.height / skView.bounds.width * size.width
-//            if newHeight > size.height {
-//                scene.anchorPoint = CGPoint(x: 0, y: (newHeight - scene.size.height) / 2.0 / newHeight)
-//                size.height = newHeight
-//                scene.size = size
-//                print("scene.size = \(size)")
-//            }
-//        }
-//    }
 
 }
