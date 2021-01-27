@@ -33,7 +33,7 @@ final class Skater: SKSpriteNode {
         if let sparksPath = bundle.path(forResource: "sparks", ofType: "sks") {
            
             // Создаем узел эмиттера искр
-            let sparksNode = NSKeyedUnarchiver.unarchiveObject (withFile: sparksPath) as! SKEmitterNode
+            let sparksNode = NSKeyedUnarchiver.unarchiveObject(withFile: sparksPath) as! SKEmitterNode
             sparksNode.position = CGPoint(x: 0.0, y: -50.0)
             addChild(sparksNode)
             
