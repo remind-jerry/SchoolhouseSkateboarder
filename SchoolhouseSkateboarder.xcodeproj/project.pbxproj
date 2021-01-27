@@ -16,6 +16,9 @@
 		E0CD8EC825B5FE0A007E3414 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD8EC725B5FE0A007E3414 /* GameViewController.swift */; };
 		E0CD8ECB25B5FE0A007E3414 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0CD8EC925B5FE0A007E3414 /* Main.storyboard */; };
 		E0CD8ECD25B5FE0B007E3414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0CD8ECC25B5FE0B007E3414 /* Assets.xcassets */; };
+		E0EB9BA225C0919400D2C559 /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = E0EB9BA025C0919400D2C559 /* jump.wav */; };
+		E0EB9BA325C0919400D2C559 /* gem.wav in Resources */ = {isa = PBXBuildFile; fileRef = E0EB9BA125C0919400D2C559 /* gem.wav */; };
+		E0EB9BA625C0933A00D2C559 /* sparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = E0EB9BA525C0933A00D2C559 /* sparks.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		E0CD8ECA25B5FE0A007E3414 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E0CD8ECC25B5FE0B007E3414 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0CD8ECE25B5FE0B007E3414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0EB9BA025C0919400D2C559 /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
+		E0EB9BA125C0919400D2C559 /* gem.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gem.wav; sourceTree = "<group>"; };
+		E0EB9BA525C0933A00D2C559 /* sparks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sparks.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +73,15 @@
 				E0CD8EC725B5FE0A007E3414 /* GameViewController.swift */,
 				E0CD8EC925B5FE0A007E3414 /* Main.storyboard */,
 				E0CD8ECC25B5FE0B007E3414 /* Assets.xcassets */,
+				E0EB9BA125C0919400D2C559 /* gem.wav */,
+				E0EB9BA025C0919400D2C559 /* jump.wav */,
+				E0CD8ECE25B5FE0B007E3414 /* Info.plist */,
 				E0A7333E25B7211B00171372 /* Skater.swift */,
 				E0A8560325C04F1300E738BA /* MenuLayer.swift */,
 				6780150A25C07D560084126D /* PhysicsCategory.swift */,
 				E0CD8ECE25B5FE0B007E3414 /* Info.plist */,
 				6780151125C148B30084126D /* Launch Screen.storyboard */,
+				E0EB9BA525C0933A00D2C559 /* sparks.sks */,
 			);
 			path = SchoolhouseSkateboarder;
 			sourceTree = "<group>";
@@ -133,6 +143,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0EB9BA325C0919400D2C559 /* gem.wav in Resources */,
+				E0EB9BA225C0919400D2C559 /* jump.wav in Resources */,
 				E0CD8ECB25B5FE0A007E3414 /* Main.storyboard in Resources */,
 				E0CD8ECD25B5FE0B007E3414 /* Assets.xcassets in Resources */,
 				6780151225C148B30084126D /* Launch Screen.storyboard in Resources */,

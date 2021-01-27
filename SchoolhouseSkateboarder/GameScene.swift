@@ -293,7 +293,9 @@ final class GameScene: SKScene {
     
     @objc private func handleTap(tapGesture: UITapGestureRecognizer) {
         if gameState == .running {
-            if skater.isOnGround { skater.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 260.0)) }
+            if skater.isOnGround { skater.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 260.0))
+                run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
+            }
         } else {
             // Если игра не запущена, нажатие на экран запускает новую игру
             if let menuLayer: SKSpriteNode = childNode(withName: "menuLayer") as? SKSpriteNode {
@@ -311,13 +313,19 @@ extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         // Проверяем, есть ли контакт между скейтбордисткой и секцией
         if contact.bodyA.categoryBitMask == PhysicsCategory.skater && contact.bodyB.categoryBitMask == PhysicsCategory.brick {
+            if let velocityY = skater.physicsBody?.velocity.dy {
+            if !skater.isOnGround && velocityY < 100.0 {
+                skater.createSparks()
+            }
+            }
             skater.isOnGround = true
         } else if contact.bodyA.categoryBitMask == PhysicsCategory.skater && contact.bodyB.categoryBitMask == PhysicsCategory.gem {
             // Скейтбордистка коснулась алмаза, поэтому мы его убираем
             if let gem = contact.bodyB.node as? SKSpriteNode {
-                removeGem(gem)
-                score += 50
-                updateScoreLabelText()
+            removeGem(gem)
+            score += 50
+            updateScoreLabelText()
+            run(SKAction.playSoundFileNamed("gem.wav", waitForCompletion: false))
             }
         }
     }
