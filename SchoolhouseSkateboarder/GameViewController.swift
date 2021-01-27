@@ -7,7 +7,6 @@
 
 import UIKit
 import SpriteKit
-import GameplayKit
 
 final class GameViewController: UIViewController {
 
@@ -26,20 +25,17 @@ final class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let skView = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .resizeFill
-                scene.size = view.bounds.size
-                print("SKView size: \(view.bounds.size)")
-                // Present the scene
-                skView.presentScene(scene)
-            }
-
+        if let skScene = SKScene(fileNamed: "GameScene") {
+            let skView = view as! SKView
             skView.ignoresSiblingOrder = true
             skView.showsFPS = true
             skView.showsNodeCount = true
+
+            // Set the scale mode to scale to fit the window
+            skScene.scaleMode = .resizeFill
+
+            // Present the scene
+            skView.presentScene(skScene)
         }
     }
 
