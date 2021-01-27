@@ -24,8 +24,8 @@ final class GameScene: SKScene {
     private var bricks = [SKSpriteNode]()
     private var gems = [SKSpriteNode]()
     private var brickSize: CGSize = .zero
-    private var brickLevel = BrickLevel.low
-    private var gameState = GameState.notRunning
+    private var brickLevel: BrickLevel = .low
+    private var gameState: GameState = .notRunning
     private var scrollSpeed: CGFloat = 5.0
     private var score: Int = 0
     private var highScore: Int = 0
@@ -46,25 +46,25 @@ final class GameScene: SKScene {
         let xMid = frame.midX
         let yMid = frame.midY
         backgroundNode.position = CGPoint(x: xMid, y: yMid)
-        backgroundNode.size = self.size // размер картинки для сцены подогнали под размер сцены
+        backgroundNode.size = size // размер картинки для сцены подогнали под размер сцены
         addChild(backgroundNode)
 
         setupLabels()
         addChild(skater)
         skater.setupPhysicsBody()
         
-        let tapMethod = #selector(GameScene.handleTap(tapGesture:))
+        let tapMethod = #selector(handleTap)
         let tapGesture = UITapGestureRecognizer(target: self, action: tapMethod)
         view.addGestureRecognizer(tapGesture)
         
         // Добавляем слой меню с текстом "Нажмите, чтобы играть"
         let menuBackgroundColor = UIColor.black.withAlphaComponent(0.4)
-        let menuLayer = MenuLayer(color: menuBackgroundColor, size: self.size)
+        let menuLayer = MenuLayer(color: menuBackgroundColor, size: size)
         menuLayer.anchorPoint = .zero
         menuLayer.position = .zero
         menuLayer.zPosition = 30
         menuLayer.name = "menuLayer"
-        menuLayer.display(message: "Tap to play", score: nil)
+        menuLayer.display(message: "Tap to play111111111", score: nil)
         
         addChild(menuLayer)
     }

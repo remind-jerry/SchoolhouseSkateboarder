@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6780150B25C07D560084126D /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6780150A25C07D560084126D /* PhysicsCategory.swift */; };
+		6780151225C148B30084126D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6780151125C148B30084126D /* Launch Screen.storyboard */; };
 		E0A7333F25B7211B00171372 /* Skater.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A7333E25B7211B00171372 /* Skater.swift */; };
 		E0A8560425C04F1300E738BA /* MenuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A8560325C04F1300E738BA /* MenuLayer.swift */; };
 		E0CD8EC025B5FE0A007E3414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD8EBF25B5FE0A007E3414 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		6780150A25C07D560084126D /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
+		6780151125C148B30084126D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E0A7333E25B7211B00171372 /* Skater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skater.swift; sourceTree = "<group>"; };
 		E0A8560325C04F1300E738BA /* MenuLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLayer.swift; sourceTree = "<group>"; };
 		E0CD8EBC25B5FE0A007E3414 /* SchoolhouseSkateboarder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolhouseSkateboarder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +77,7 @@
 				E0A8560325C04F1300E738BA /* MenuLayer.swift */,
 				6780150A25C07D560084126D /* PhysicsCategory.swift */,
 				E0CD8ECE25B5FE0B007E3414 /* Info.plist */,
+				6780151125C148B30084126D /* Launch Screen.storyboard */,
 			);
 			path = SchoolhouseSkateboarder;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 				E0CD8ECB25B5FE0A007E3414 /* Main.storyboard in Resources */,
 				E0CD8EC225B5FE0A007E3414 /* GameScene.sks in Resources */,
 				E0CD8ECD25B5FE0B007E3414 /* Assets.xcassets in Resources */,
+				6780151225C148B30084126D /* Launch Screen.storyboard in Resources */,
 				E0CD8EC425B5FE0A007E3414 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
