@@ -43,9 +43,7 @@ final class GameScene: SKScene {
         anchorPoint = .zero
 
         let backgroundNode = SKSpriteNode(imageNamed: "background")
-        let xMid = frame.midX
-        let yMid = frame.midY
-        backgroundNode.position = CGPoint(x: xMid, y: yMid)
+        backgroundNode.position = CGPoint(x: frame.midX, y: frame.midY)
         backgroundNode.size = size // размер картинки для сцены подогнали под размер сцены
         addChild(backgroundNode)
 
@@ -64,7 +62,7 @@ final class GameScene: SKScene {
         menuLayer.position = .zero
         menuLayer.zPosition = 30
         menuLayer.name = "menuLayer"
-        menuLayer.display(message: "Tap to play111111111", score: nil)
+        menuLayer.display(message: "Tap to play", score: nil)
         
         addChild(menuLayer)
     }
@@ -101,47 +99,47 @@ final class GameScene: SKScene {
     }
     
     private func setupLabels() {
-        // Надпись со словами "очки" в верхнем левом углу
+        // Надпись со словами "Score" в верхнем левом углу
         let scoreTextLabel: SKLabelNode = SKLabelNode(text: "Score")
-        scoreTextLabel.position = CGPoint(x: 14.0, y: frame.size.height - 20.0)
+        scoreTextLabel.position = CGPoint(x: frame.minX + (frame.size.width / 10), y: frame.maxY - 50.0)
         scoreTextLabel.horizontalAlignmentMode = .left
         scoreTextLabel.fontName = "Courier-Bold"
-        scoreTextLabel.fontSize = 14.0
+        scoreTextLabel.fontSize = 25.0
         scoreTextLabel.zPosition = 20
         addChild(scoreTextLabel)
         
         // Надпись с количеством очков игрока в текущей игре
         let scoreLabel: SKLabelNode = SKLabelNode(text: "0")
-        scoreLabel.position = CGPoint(x: 14.0, y: frame.size.height - 40.0)
+        scoreLabel.position = CGPoint(x: frame.minX + 200, y: frame.maxY - 50.0)
         scoreLabel.horizontalAlignmentMode = .left
         scoreLabel.fontName = "Courier-Bold"
-        scoreLabel.fontSize = 18.0
+        scoreLabel.fontSize = 25.0
         scoreLabel.name = "scoreLabel"
         scoreLabel.zPosition = 20
         addChild(scoreLabel)
         
-        // Надпись "лучший результат" в правом верхнем углу
-        let highScoreTextLabel: SKLabelNode = SKLabelNode(text:  "Best score")
-        highScoreTextLabel.position = CGPoint(x: frame.size.width - 14.0,  y: frame.size.height - 20.0)
+        // Надпись "Best score" в правом верхнем углу
+        let highScoreTextLabel: SKLabelNode = SKLabelNode(text: "Best score")
+        highScoreTextLabel.position = CGPoint(x: frame.maxX - (frame.size.width / 6.5),  y: frame.maxY - 50)
         highScoreTextLabel.horizontalAlignmentMode = .right
         highScoreTextLabel.fontName = "Courier-Bold"
-        highScoreTextLabel.fontSize = 14.0
+        highScoreTextLabel.fontSize = 25.0
         highScoreTextLabel.zPosition = 20
         addChild(highScoreTextLabel)
         
         // Надпись с максимумом набранных игроком очков
         let highScoreLabel: SKLabelNode = SKLabelNode(text: "0")
-        highScoreLabel.position = CGPoint(x: frame.size.width - 14.0, y: frame.size.height - 40.0)
-        highScoreLabel.horizontalAlignmentMode = .right
+        highScoreLabel.position = CGPoint(x: frame.maxX - 160, y: frame.maxY - 50.0)
+        highScoreLabel.horizontalAlignmentMode = .left
         highScoreLabel.fontName = "Courier-Bold"
-        highScoreLabel.fontSize = 18.0
+        highScoreLabel.fontSize = 25.0
         highScoreLabel.name = "highScoreLabel"
         highScoreLabel.zPosition = 20
         addChild(highScoreLabel)
     }
     
     private func updateScoreLabelText() {
-        if let scoreLabel = childNode(withName: "scoreLabel") as?SKLabelNode {
+        if let scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode {
             scoreLabel.text = String(format: "%04d", score)
         }
     }
